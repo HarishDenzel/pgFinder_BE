@@ -62,6 +62,103 @@ public class User implements Serializable{
 	
 	@Column(name="pg_flex3")
 	private String flex3;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public String getViewcnt() {
+		return viewcnt;
+	}
+
+	public void setViewcnt(String viewcnt) {
+		this.viewcnt = viewcnt;
+	}
+
+	public String getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(String createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public String getUpdateddate() {
+		return updateddate;
+	}
+
+	public void setUpdateddate(String updateddate) {
+		this.updateddate = updateddate;
+	}
+
+	public String getLastlogin() {
+		return lastlogin;
+	}
+
+	public void setLastlogin(String lastlogin) {
+		this.lastlogin = lastlogin;
+	}
+
+	public String getActive() {
+		return active;
+	}
+
+	public void setActive(String active) {
+		this.active = active;
+	}
+
+	public String getFlex1() {
+		return flex1;
+	}
+
+	public void setFlex1(String flex1) {
+		this.flex1 = flex1;
+	}
+
+	public String getFlex2() {
+		return flex2;
+	}
+
+	public void setFlex2(String flex2) {
+		this.flex2 = flex2;
+	}
+
+	public String getFlex3() {
+		return flex3;
+	}
+
+	public void setFlex3(String flex3) {
+		this.flex3 = flex3;
+	}
+	
 	
 
 }

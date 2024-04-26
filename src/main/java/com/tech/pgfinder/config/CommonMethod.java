@@ -25,7 +25,7 @@ import com.tech.pgfinder.service.UserService;
 
 @Component
 public class CommonMethod {
-	
+
 	@Autowired
 	UserService usrservice;
 
@@ -56,10 +56,10 @@ public class CommonMethod {
 				}
 			});
 			long currentTimestamp = System.currentTimeMillis();
-	        String otp = generateOTP(currentTimestamp);
-	        usrservice.saveOtp(otp,Emailid);
+			String otp = generateOTP(currentTimestamp, Emailid);
 			subject = "Pgfinder OTP"; // Get subject
-			messageText = "Use OTP "+otp+" to log into your pgfinder account. Do not share the OTP or your number with anyone.This OTP will expire in 15 minutes.";
+			messageText = "Use OTP " + otp
+					+ " to log into your pgfinder account. Do not share the OTP or your number with anyone.This OTP will expire in 15 minutes.";
 			MimeMessage message = new MimeMessage(mailsession);
 			message.setFrom(new InternetAddress(senderEmail));
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toAddress));
@@ -80,23 +80,34 @@ public class CommonMethod {
 		}
 		return strResult;
 	}
-	
-	 public static String generateOTP() {
-	        Random random = new Random();
-	        int otp = 100000 + random.nextInt(900000); // Generate a random 6-digit number
-	        return String.valueOf(otp);
-	    }
-	 
-	 public static String generateOTP(long timestamp) {
-	        return timestamp + generateOTP();
-	    }
-	 
-	 public boolean isOTPValid(String otp, long timestamp) {
-	        long currentTime = System.currentTimeMillis();
-	        long otpTime = Long.parseLong(otp.substring(0, 13)); // Extract timestamp from OTP
-	        long timeDifference = currentTime - otpTime;
-	        long fifteenMinutesInMillis = TimeUnit.MINUTES.toMillis(15);
-	        return timeDifference <= fifteenMinutesInMillis && otp.equals(generateOTP(timestamp));
-	    }
+
+	public static String generateOTP() {
+		Random random = new Random();
+		int otp = 100000 + random.nextInt(900000); // Generate a random 6-digit number
+		return String.valueOf(otp);
+	}
+
+	public String generateOTP(long timestamp, String Emailid) {
+		String otp = generateOTP();
+		if (!Emailid.isEmpty()) {
+			try {
+				usrservice.saveOtp(otp, Emailid, timestamp + otp);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return otp;
+		}
+		return timestamp+otp;
+	}
+
+	public boolean isOTPValid(String otp) {
+	    long currentTime = System.currentTimeMillis();
+	    long otpTime = Long.parseLong(otp.substring(0, 13)); // Extract timestamp from OTP
+	    long timeDifference = currentTime - otpTime;
+	    long fifteenMinutesInMillis = TimeUnit.MINUTES.toMillis(15);
+	    return timeDifference >= 0 && timeDifference <= fifteenMinutesInMillis;
+	}
+
 
 }

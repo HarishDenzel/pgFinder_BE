@@ -1,10 +1,9 @@
 package com.tech.pgfinder.service;
 
 import java.text.DateFormat;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,7 +78,7 @@ public class UserService {
 		return defaultDetails;
 	}
 
-	public void saveOtp(String otp, String emailid) {
+	public void saveOtp(String otp, String emailid,String time) {
 		try {
 			Date curdate = new Date();
 			OtpDetails pgotp = new OtpDetails();
@@ -89,6 +88,7 @@ public class UserService {
 			pgotp.setEmail(emailid);
 			pgotp.setUserId(user_id);
 			pgotp.setOtp(otp);
+			pgotp.setOtpstmp(time);
 			otprepos.save(pgotp);
 		} catch (Exception e) {
 			LOGGER.error("saveOtp Service" + e.toString());
@@ -98,11 +98,9 @@ public class UserService {
 	public ApplicationResponse<String> validateOtp(Request request) {
 		ApplicationResponse<String> defaultDetails = new ApplicationResponse<>();
 		try {
-			long currentTimestamp = System.currentTimeMillis();
-	        long fifteenMinutesInMillis = TimeUnit.MINUTES.toMillis(15);
-	        long futureTimestamp = currentTimestamp + fifteenMinutesInMillis + 1000; // Adding 1000ms for demo
-	        boolean isValid = common.isOTPValid(request.getOtp(), futureTimestamp);
-	        String res = otprepos.validateOtp(request.getEmail(),request.getOtp());
+			// Adding 1000ms for demo
+			String res = otprepos.validateOtp(request.getEmail(),request.getOtp());
+	        boolean isValid = common.isOTPValid(res);
 	        if (isValid && res != null) {
 	        	defaultDetails.setMessage(Constants.STATUS_SUCCESS_MSG);
 				defaultDetails.setResult(Constants.SUCCESS_OTP);

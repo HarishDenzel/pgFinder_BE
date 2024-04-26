@@ -18,7 +18,7 @@ public class Constants {
 
 	public static final String STATUS_FAILURE_MSG = "N";
 
-	public static final String SUCCESS_OTP = "OTP is valid";
+	public static final String SUCCESS_OTP = "OTP valid";
 
 	public static final String FAILURE_OTP = "OTP is expired or invalid.";
 

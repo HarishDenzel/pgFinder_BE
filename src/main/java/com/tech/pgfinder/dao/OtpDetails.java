@@ -40,6 +40,65 @@ public class OtpDetails implements Serializable{
 	@Column(name="created_date")
 	private String createdDate;
 	
+	@Column(name="otp_tim")
+	private String otpstmp;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getOtp() {
+		return otp;
+	}
+
+	public void setOtp(String otp) {
+		this.otp = otp;
+	}
+
+	public String getActive() {
+		return active;
+	}
+
+	public void setActive(String active) {
+		this.active = active;
+	}
+
+	public String getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(String createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public String getOtpstmp() {
+		return otpstmp;
+	}
+
+	public void setOtpstmp(String otpstmp) {
+		this.otpstmp = otpstmp;
+	}
+	
 
 
 

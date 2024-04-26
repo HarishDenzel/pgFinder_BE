@@ -10,7 +10,7 @@ import com.tech.pgfinder.dao.OtpDetails;
 @Repository
 public interface OtpDetailsRepository extends JpaRepository<OtpDetails,Integer>{
 
-	@Query(value="select pg_id from otp_details where email=? and otp=?",nativeQuery = true)
+	@Query(value="select otp_tim from otp_details where email=? and otp=?",nativeQuery = true)
 	String validateOtp(String email, String otp);
 
 }
