@@ -21,6 +21,10 @@ public class Constants {
 	public static final String SUCCESS_OTP = "OTP valid";
 
 	public static final String FAILURE_OTP = "OTP is expired or invalid.";
+	
+	public static final String SUCCESS_PASSWORD = "OTP valid";
+
+	public static final String FAILURE_PASSWORD = "OTP is expired or invalid.";
 
 	/** Date Format */
 

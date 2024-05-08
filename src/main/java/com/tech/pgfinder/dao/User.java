@@ -33,6 +33,9 @@ public class User implements Serializable{
 	@Column(name="user_name")
 	private String name;
 	
+	@Column(name="password")
+	private String password;
+	
 	@Column(name="email")
 	private String email;
 	
@@ -157,6 +160,14 @@ public class User implements Serializable{
 
 	public void setFlex3(String flex3) {
 		this.flex3 = flex3;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 	

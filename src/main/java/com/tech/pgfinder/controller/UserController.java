@@ -19,8 +19,11 @@ public class UserController {
 	UserService userservice;
 	
 	/**
-	 * save user details to register in application using param name,email,mobile 09April2024
-	 * 
+	 * save user details to register in application on 09April2024
+	 * name
+	 * email
+	 * mobile
+	 * password
 	 * @return
 	 */
 	@PostMapping("/register")
@@ -29,24 +32,28 @@ public class UserController {
 	}
 	
 	/**
-	 * send otp to register mobile number to login application using param email 09April2024
-	 * 
-	 * @return
-	 */	
-	@PostMapping("/sendotp")
-	public ApplicationResponse<String> sendOtp(@RequestBody Request request) {	
-		return userservice.sendOtp(request);
-	}
-	
-	/**
-	 * validate otp to register mobile number to login application using param email,otp 09April2024
-	 * 
+	 * validate otp to register mobile number to login application on 09April2024
+	 * email
+	 * otp
 	 * @return
 	 */	
 	@PostMapping("/validateotp")
 	public ApplicationResponse<String> validateOtp(@RequestBody Request request) {	
 		return userservice.validateOtp(request);
 	}
+	
+	/**
+	 *  login application  08May2024
+	 * mobile
+	 * email
+	 * password
+	 * @return
+	 */	
+	@PostMapping("/login")
+	public ApplicationResponse<String> login(@RequestBody Request request) {	
+		return userservice.login(request);
+	}
+
 
 
 	

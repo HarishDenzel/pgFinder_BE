@@ -83,7 +83,7 @@ public class CommonMethod {
 
 	public static String generateOTP() {
 		Random random = new Random();
-		int otp = 100000 + random.nextInt(900000); // Generate a random 6-digit number
+		int otp = 1000 + random.nextInt(9000); // Generate a random 6-digit number
 		return String.valueOf(otp);
 	}
 
